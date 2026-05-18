@@ -14,6 +14,7 @@ RUN pnpm build
 FROM node:22-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
+ENV HOSTNAME=0.0.0.0
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
